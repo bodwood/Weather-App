@@ -19,7 +19,7 @@ module.exports = {
     new ESLintPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'UPDATE NAME HERE',
+      title: 'Weather-App',
       template: './src/index.html',
       inject: 'body'
     })
