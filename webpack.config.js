@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin');
@@ -22,7 +23,8 @@ module.exports = {
       title: 'Weather-App',
       template: './src/index.html',
       inject: 'body'
-    })
+    }),
+    new Dotenv()
   ],
   module: {
     rules: [{
