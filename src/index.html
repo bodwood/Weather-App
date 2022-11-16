@@ -12,8 +12,18 @@
       cairo
     </pre>
     <form id="form">
-      <label for="location">Enter a location:</label>
-      <input id="location" type="text" name="location">
+      <div class="row">
+        <div class="col-3">
+        <label for="location">Enter a city:</label>
+        <input id="city" type="text" name="city">
+        </div>
+        <div class="col-3">
+      <label for="location">Enter a state:</label>
+      <input id="state" type="text" name="state">
+      </div>
+      </div>
+      <br>
+
       <button type="submit" class="btn-success" id="weatherLocation">Get Current Temperature and Humidity</button>
     </form>
     <p id="showResponse"></p>

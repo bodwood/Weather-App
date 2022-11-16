@@ -2,9 +2,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css'
 
-function getWeather(city) {
+function getWeather(city, state) {
   let request = new XMLHttpRequest();
-  const url =  `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}`;
+  const url =  `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&appid=${process.env.API_KEY}`;
 
   //add ${OR}, ${US} to URL above
 
@@ -26,7 +26,8 @@ function getWeather(city) {
 function printError(request, apiResponse, city){
   document.getElementById('showResponse').innerHTML = `There was an error accessing the weather data for ${city}:  ${request.status} ${request.statusText}: ${apiResponse.message}`;
 }
-//(0K − 273.15) × 9/5 + 32
+
+
 function printElements(apiResponse, city) {
   const fahrenheit = parseFloat((apiResponse.main.temp - 273.15) * (9/5) + 32).toFixed(1);
   const description = apiResponse.weather[0].description;
@@ -39,9 +40,12 @@ function printElements(apiResponse, city) {
 
 function handleFormSubmission(event) {
   event.preventDefault();
-  const city = document.getElementById('location').value;
-  document.getElementById('location').value = null;
-  getWeather(city);
+  const city = document.getElementById('city').value;
+  const state = document.getElementById('state').value;
+  document.getElementById('city').value = null;
+  document.getElementById('state').value = null;
+
+  getWeather(city, state);
 }
 
 window.addEventListener("load", function() {
